@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MessageCircle } from "lucide-react";
 
 const footerLinks = [
   { href: "#about", label: "About" },
@@ -34,10 +35,13 @@ export function Footer() {
             ))}
           </nav>
           <a
-            href="mailto:m.shayan54179@gmail.com"
-            className="text-[#222222] text-sm font-medium hover:underline"
+            href="https://wa.me/971506926298"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#222222] hover:bg-[#333333] text-white text-sm font-medium px-5 py-2.5 transition-colors"
           >
-            m.shayan54179@gmail.com
+            <MessageCircle className="w-4 h-4" />
+            Chat on WhatsApp
           </a>
         </div>
         <p className="text-[#7B7B7B] text-sm text-center mt-8">

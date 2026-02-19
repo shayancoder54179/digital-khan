@@ -140,9 +140,6 @@ export function Contact() {
               <MessageCircle className="w-5 h-5" />
               Chat on WhatsApp
             </a>
-            <div className="text-[#222222]">
-              <p className="font-medium">m.shayan54179@gmail.com</p>
-            </div>
             <p className="text-[#7B7B7B] text-sm">
               I respond within 24 hours
             </p>
