@@ -38,8 +38,8 @@ const projects = [
     name: "Al Hayl Medical Center",
     tags: ["Healthcare", "Demo Project"],
     description:
-      "A demo site for a real medical centre in Fujairah, UAE, with no online presence except their Google profile. Built to showcase services, doctors, booking flow and trust — ready to go live when they are.",
-    link: "https://al-hayl-medical-centre.vercel.app/",
+      "A demo site for a real medical center in Fujairah, UAE, with no online presence except their Google profile. Built to showcase services, doctors, booking flow and trust — ready to go live when they are.",
+    link: "https://al-hayl-medical-center.vercel.app/",
     buttonText: "View Demo Site",
     image: "alhaylmedicalcenter.png",
   },
