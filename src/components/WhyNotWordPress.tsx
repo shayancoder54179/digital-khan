@@ -50,7 +50,7 @@ export function WhyNotWordPress() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -60,7 +60,7 @@ export function WhyNotWordPress() {
           <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
             Why Businesses Are Leaving WordPress Behind
           </h2>
-          <p className="text-[#7B7B7B] text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-[#7B7B7B] text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
             Your website should be making you money, not causing you headaches.
           </p>
         </motion.div>
@@ -69,18 +69,18 @@ export function WhyNotWordPress() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="overflow-hidden rounded-xl border border-[#e5e5e5]"
+          className="overflow-x-auto rounded-xl border border-[#e5e5e5]"
         >
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse min-w-[600px]">
             <thead>
               <tr>
-                <th className="w-[140px] sm:w-[160px] text-left py-4 px-4 sm:px-6 text-sm font-medium text-[#7B7B7B] bg-[var(--dk-bg)] border-b border-[#e5e5e5]">
+                <th className="w-[140px] sm:w-[160px] text-left py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm font-medium text-[#7B7B7B] bg-[var(--dk-bg)] border-b border-[#e5e5e5]">
                   {/* Row header placeholder */}
                 </th>
-                <th className="py-4 px-4 sm:px-6 text-sm font-semibold text-white bg-[#222222] border-b border-[#333333]">
+                <th className="py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm font-semibold text-white bg-[#222222] border-b border-[#333333]">
                   WordPress
                 </th>
-                <th className="py-4 px-4 sm:px-6 text-sm font-semibold text-white bg-[#166534] border-b border-[#15803d]">
+                <th className="py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm font-semibold text-white bg-[#166534] border-b border-[#15803d]">
                   What I Build
                 </th>
               </tr>
@@ -91,13 +91,13 @@ export function WhyNotWordPress() {
                   key={row.label}
                   className="border-b border-[#e5e5e5] last:border-b-0"
                 >
-                  <td className="py-4 px-4 sm:px-6 text-sm font-medium text-[#222222] bg-[var(--dk-bg)]">
+                  <td className="py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm font-medium text-[#222222] bg-[var(--dk-bg)]">
                     {row.label}
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-sm text-white/90 bg-[#222222]">
+                  <td className="py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm text-white/90 bg-[#222222]">
                     {row.wordpress}
                   </td>
-                  <td className="py-4 px-4 sm:px-6 text-sm text-white bg-[#166534]">
+                  <td className="py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm text-white bg-[#166534]">
                     {row.better}
                   </td>
                 </tr>

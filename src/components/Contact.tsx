@@ -43,7 +43,7 @@ export function Contact() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -53,7 +53,7 @@ export function Contact() {
           <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
             Ready To Get More Clients Online?
           </h2>
-          <p className="text-[#7B7B7B] text-lg">
+          <p className="text-[#7B7B7B] text-base sm:text-lg">
             Tell me about your business and I will get back to you within 24 hours. No commitment, just a conversation.
           </p>
         </motion.div>
@@ -62,9 +62,9 @@ export function Contact() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto"
         >
-          <Card className="rounded-xl border border-[#e5e5e5] bg-white p-6">
+          <Card className="rounded-xl border border-[#e5e5e5] bg-white p-6 w-full">
             <CardContent className="p-0">
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
@@ -130,12 +130,12 @@ export function Contact() {
             </CardContent>
           </Card>
 
-          <div className="space-y-6">
+          <div className="space-y-6 w-full">
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium px-6 py-3 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium px-5 sm:px-6 py-2.5 sm:py-3 transition-colors w-full sm:w-auto justify-center"
             >
               <MessageCircle className="w-5 h-5" />
               Chat on WhatsApp

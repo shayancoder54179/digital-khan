@@ -74,7 +74,7 @@ export function Services() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -84,12 +84,12 @@ export function Services() {
           <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
             Invest In A Website That Actually Works
           </h2>
-          <p className="text-[#7B7B7B] text-lg">
+          <p className="text-[#7B7B7B] text-base sm:text-lg">
             No hidden fees. No vague timelines. Just a website that grows your business.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tiers.map((tier, i) => (
             <motion.div
               key={tier.name}

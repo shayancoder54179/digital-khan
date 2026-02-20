@@ -33,7 +33,7 @@ export function Testimonials() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -43,7 +43,7 @@ export function Testimonials() {
           Don't Take My Word For It
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((testimonial, i) => (
             <motion.div
               key={testimonial.name}
@@ -56,7 +56,7 @@ export function Testimonials() {
                   <div className="absolute top-6 left-8 text-7xl font-serif text-gray-300 leading-none">
                     &ldquo;
                   </div>
-                  <p className="text-[#222222] text-lg leading-relaxed mb-6 relative z-10">
+                  <p className="text-[#222222] text-base sm:text-lg leading-relaxed mb-6 relative z-10">
                     {testimonial.quote}
                   </p>
                   <div className="border-t border-[#e5e5e5] pt-4">

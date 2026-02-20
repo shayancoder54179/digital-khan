@@ -30,15 +30,15 @@ export function About() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-[#222222]">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-[#222222]">
               I Build Websites That Work As Hard As You Do
             </h2>
             <p className="text-[#7B7B7B] text-base leading-relaxed">

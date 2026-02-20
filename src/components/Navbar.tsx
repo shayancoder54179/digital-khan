@@ -39,7 +39,7 @@ export function Navbar() {
         scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       )}
     >
-      <nav className="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="max-w-[1280px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
           className="font-heading font-semibold text-[#222222] text-lg tracking-tight"
@@ -102,7 +102,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-[57px] bg-white z-40 md:hidden border-t border-[#e5e5e5]"
+            className="fixed inset-0 top-[65px] bg-white z-40 md:hidden border-t border-[#e5e5e5] overflow-y-auto"
           >
             <ul className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (

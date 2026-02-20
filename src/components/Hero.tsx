@@ -35,12 +35,12 @@ export function Hero() {
         />
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 relative z-10 text-center">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 relative z-10 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-heading font-bold text-[#222222] text-4xl sm:text-5xl md:text-6xl tracking-tight mb-6 max-w-5xl mx-auto leading-[1.1]"
+          className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6 max-w-5xl mx-auto leading-[1.1]"
         >
           {headline}
         </motion.h1>
@@ -49,7 +49,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-[#7B7B7B] text-lg sm:text-xl max-w-2xl mx-auto mb-10"
+          className="text-[#7B7B7B] text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10"
         >
           {subtitle}
         </motion.p>
@@ -63,7 +63,7 @@ export function Hero() {
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium px-8"
+            className="rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium px-6 sm:px-8 w-full sm:w-auto"
           >
             <Link href="#portfolio">See My Work</Link>
           </Button>
@@ -71,7 +71,7 @@ export function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full border-2 border-[#222222] text-[#222222] hover:bg-[#222222] hover:text-white font-medium px-8"
+            className="rounded-full border-2 border-[#222222] text-[#222222] hover:bg-[#222222] hover:text-white font-medium px-6 sm:px-8 w-full sm:w-auto"
           >
             <Link href="#contact">Let's Talk</Link>
           </Button>
@@ -81,7 +81,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-12 sm:gap-16 text-[#222222]"
+          className="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-16 text-[#222222]"
         >
           <Stat value={3} suffix="+ Projects Delivered" />
           <Stat value={2} suffix="+ Years Building" />

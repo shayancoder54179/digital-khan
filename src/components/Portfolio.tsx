@@ -51,7 +51,7 @@ export function Portfolio() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -61,12 +61,12 @@ export function Portfolio() {
           <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
             Real Results For Real Businesses
           </h2>
-          <p className="text-[#7B7B7B] text-lg">
+          <p className="text-[#7B7B7B] text-base sm:text-lg">
             Every website I build has one goal — to grow your business.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <motion.div
               key={project.name}

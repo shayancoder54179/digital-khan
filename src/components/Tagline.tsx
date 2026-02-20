@@ -13,7 +13,7 @@ export function Tagline() {
 
   return (
     <section className="py-12 bg-[var(--dk-bg)]">
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.p
           ref={ref}
           initial={{ opacity: 0, y: 24 }}

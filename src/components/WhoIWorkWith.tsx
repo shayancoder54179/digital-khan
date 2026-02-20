@@ -37,7 +37,7 @@ export function WhoIWorkWith() {
       ref={ref}
       className="py-24 bg-[var(--dk-bg)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -47,12 +47,12 @@ export function WhoIWorkWith() {
           <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
             Is This For You?
           </h2>
-          <p className="text-[#7B7B7B] text-lg max-w-2xl mx-auto">
+          <p className="text-[#7B7B7B] text-base sm:text-lg max-w-2xl mx-auto">
             I work best with people who are serious about growing their business online.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {clients.map((client, i) => {
             const IconComponent = client.icon;
             return (

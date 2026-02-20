@@ -13,7 +13,7 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-[#e5e5e5] bg-white py-12">
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
             <p className="font-heading font-semibold text-[#222222]">
@@ -38,7 +38,7 @@ export function Footer() {
             href="https://wa.me/971506926298"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#222222] hover:bg-[#333333] text-white text-sm font-medium px-5 py-2.5 transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-[#222222] hover:bg-[#333333] text-white text-sm font-medium px-4 sm:px-5 py-2 sm:py-2.5 transition-colors w-full sm:w-auto justify-center"
           >
             <MessageCircle className="w-4 h-4" />
             Chat on WhatsApp
