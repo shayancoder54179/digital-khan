@@ -97,17 +97,8 @@ function Stat({ value, suffix }: { value: number; suffix: string }) {
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (el) {
-      const observer = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setHasBeenVisible(true); },
-        { threshold: 0.05 }
-      );
-      observer.observe(el);
-      return () => observer.disconnect();
-    }
-  }, []);
-  useEffect(() => { if (inView) setHasBeenVisible(true); }, [inView]);
+    if (inView) setHasBeenVisible(true);
+  }, [inView]);
 
   useEffect(() => {
     if (!hasBeenVisible) return;
