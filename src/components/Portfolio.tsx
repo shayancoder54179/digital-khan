@@ -88,13 +88,13 @@ export function Portfolio() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative block w-full h-[200px] rounded-xl overflow-hidden cursor-pointer"
+                  className="relative block w-full aspect-[4/3] rounded-xl overflow-hidden cursor-pointer"
                 >
                   <Image
                     src={`/${project.image}`}
                     alt={`${project.name} website screenshot`}
                     fill
-                    className="object-cover object-top rounded-xl"
+                    className="object-contain rounded-xl"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </Link>
