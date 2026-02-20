@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 
 const comparisons = [
   {
@@ -65,13 +66,52 @@ export function WhyNotWordPress() {
           </p>
         </motion.div>
 
+        {/* Mobile Card Layout - shown below 768px */}
+        <div className="md:hidden space-y-4">
+          {comparisons.map((row, i) => (
+            <motion.div
+              key={row.label}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.05 }}
+            >
+              <Card className="rounded-xl border border-[#e5e5e5] bg-white overflow-hidden">
+                <CardContent className="p-4 space-y-3">
+                  <h3 className="font-heading font-semibold text-[#222222] text-sm">
+                    {row.label}
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <span className="text-xs font-medium text-[#7B7B7B] min-w-[80px]">
+                        WordPress:
+                      </span>
+                      <span className="text-sm text-red-600 font-medium">
+                        {row.wordpress}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-xs font-medium text-[#7B7B7B] min-w-[80px]">
+                        What I Build:
+                      </span>
+                      <span className="text-sm text-[#166534] font-medium">
+                        {row.better}
+                      </span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop Table Layout - shown at 768px and above */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="overflow-x-auto rounded-xl border border-[#e5e5e5]"
+          className="hidden md:block overflow-hidden rounded-xl border border-[#e5e5e5]"
         >
-          <table className="w-full border-collapse min-w-[600px]">
+          <table className="w-full border-collapse">
             <thead>
               <tr>
                 <th className="w-[140px] sm:w-[160px] text-left py-3 sm:py-4 px-3 sm:px-4 md:px-6 text-xs sm:text-sm font-medium text-[#7B7B7B] bg-[var(--dk-bg)] border-b border-[#e5e5e5]">
