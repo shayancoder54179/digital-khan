@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -40,9 +40,17 @@ export function Portfolio() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, {
     once: true,
-    amount: 0.2,
-    margin: "-80px",
+    amount: 0.05, // trigger when 5% visible (works on small mobile viewports)
+    margin: "-40px", // less aggressive than -80px so mobile still triggers
   });
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+
+  // Fallback: if useInView never fires (e.g. mobile quirks), show cards after a short delay
+  useEffect(() => {
+    if (inView) setHasBeenVisible(true);
+    const fallback = setTimeout(() => setHasBeenVisible(true), 800);
+    return () => clearTimeout(fallback);
+  }, [inView]);
 
   return (
     <section
@@ -53,7 +61,7 @@ export function Portfolio() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={hasBeenVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
@@ -70,7 +78,7 @@ export function Portfolio() {
             <motion.div
               key={project.name}
               initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={hasBeenVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * i }}
               className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[8px]"
             >
