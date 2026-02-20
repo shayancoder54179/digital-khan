@@ -10,10 +10,15 @@ import { Badge } from "@/components/ui/badge";
 const tiers = [
   {
     name: "Starter",
-    price: "AED 4,500",
+    priceUSD: "$1,500",
+    priceAED: "AED 5,500",
     popular: false,
+    tagline: "Get online with a professional website that makes clients take you seriously.",
+    description:
+      "Get a fast, professional website live in 2 weeks — designed to make your business look credible and convert visitors into leads.",
     features: [
       "5 pages, modern design, mobile optimized",
+      "Basic copywriting included (hero, about, services, contact)",
       "Contact form + WhatsApp button",
       "Basic on-page SEO",
       "2 week delivery",
@@ -21,25 +26,34 @@ const tiers = [
   },
   {
     name: "Growth",
-    price: "AED 6,500",
+    priceUSD: "$2,500",
+    priceAED: "AED 9,000",
     popular: true,
+    tagline: "Get found on Google and turn your website into a lead generation machine.",
+    description:
+      "Everything in Starter plus Google Search Console setup and technical SEO — so your business actually gets found when people search for you.",
     features: [
       "Up to 8 pages",
-      "Copywriting included",
+      "Full copywriting included (all sections written professionally)",
       "Google Search Console setup",
       "Technical SEO audit",
+      "Meta descriptions written for SEO",
       "2-3 week delivery",
     ],
   },
   {
     name: "Premium",
-    price: "AED 9,500",
+    priceUSD: "$4,000",
+    priceAED: "AED 14,500",
     popular: false,
+    tagline: "The complete package for businesses serious about dominating online.",
+    description:
+      "The complete package — a fully optimized website with blog setup for long-term SEO growth and 1 month of support after launch.",
     features: [
       "Up to 12 pages",
+      "SEO-optimized copywriting (written with target keywords)",
       "Everything in Growth",
-      "Blog setup for SEO",
-      "Featured listings section",
+      "Blog setup for long-term SEO",
       "1 month post-launch support",
       "3 week delivery",
     ],
@@ -61,14 +75,19 @@ export function Services() {
       className="py-24 bg-[var(--dk-bg)]"
     >
       <div className="max-w-[1280px] mx-auto px-6">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-12"
+          className="mb-12"
         >
-          What I Offer
-        </motion.h2>
+          <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
+            Invest In A Website That Actually Works
+          </h2>
+          <p className="text-[#7B7B7B] text-lg">
+            No hidden fees. No vague timelines. Just a website that grows your business.
+          </p>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {tiers.map((tier, i) => (
@@ -99,10 +118,16 @@ export function Services() {
                     {tier.name}
                   </h3>
                   <p className="text-2xl font-semibold text-[#222222]">
-                    {tier.price}
+                    {tier.priceAED}
+                    <span className="text-sm font-normal text-[#7B7B7B] ml-1">
+                      (~{tier.priceUSD})
+                    </span>
                   </p>
                 </CardHeader>
                 <CardContent className="flex-1 space-y-3">
+                  <p className="text-sm font-medium text-[#222222] leading-relaxed">
+                    {tier.tagline}
+                  </p>
                   <ul className="space-y-2 text-sm text-[#7B7B7B]">
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-2">

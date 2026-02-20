@@ -9,10 +9,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const projects = [
   {
-    name: "James Harrington Real Estate",
-    tags: ["Demo Project", "Real Estate"],
+    name: "James Harrington",
+    tags: ["Real Estate", "Demo Project"],
     description:
-      "A demo project showcasing what a luxury Dubai real estate broker website can look like — built with Next.js, parallax scroll animations, Framer Motion effects and full mobile optimization.",
+      "A luxury real estate broker website built to convert high-net-worth visitors into enquiries — premium design, fast loading and built to make any broker stand out in a crowded market.",
     link: "https://james-harrington-realestate.vercel.app",
     tech: ["Next.js", "Tailwind", "Framer Motion"],
     accent: "amber",
@@ -21,7 +21,7 @@ const projects = [
     name: "Bhadeya",
     tags: ["Service Business", "Live Project"],
     description:
-      "Rebuilt a slow, hard-to-manage WordPress site into a fast Next.js website. Result: improved page speed, stronger design, easy client CTAs — and the business started receiving daily leads and impressions on Google organically before any paid ads. Google Ads campaign launched on top further accelerated growth.",
+      "A UAE business that was getting zero leads from their old website. After the rebuild — leads coming in daily, better Google visibility and Google Ads performing stronger than ever.",
     link: "https://bhadeya.com",
     tech: ["Next.js", "Tailwind", "shadcn/ui"],
     accent: "blue",
@@ -30,7 +30,7 @@ const projects = [
     name: "Exaim",
     tags: ["SaaS / B2B", "Live Project"],
     description:
-      "Migrated a WordPress site to Next.js for an AI-powered EdTech platform. Built as a B2B lead generation website — clients now actively reach out, understand the product better, and book demos directly through the site. Technical SEO, sitemap and Google Search Console all configured for long term organic growth.",
+      "A B2B platform that needed to turn website visitors into demo bookings. Result — clients now reach out faster, understand the product better and the team can update the site in minutes instead of hours.",
     link: "https://exaim.ai",
     tech: ["Next.js", "React", "TypeScript"],
     accent: "purple",
@@ -52,14 +52,19 @@ export function Portfolio() {
       className="py-24 bg-[var(--dk-bg)]"
     >
       <div className="max-w-[1280px] mx-auto px-6">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-12"
+          className="mb-12"
         >
-          Selected Work
-        </motion.h2>
+          <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
+            Real Results For Real Businesses
+          </h2>
+          <p className="text-[#7B7B7B] text-lg">
+            Every website I build has one goal — to grow your business.
+          </p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (

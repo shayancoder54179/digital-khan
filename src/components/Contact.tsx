@@ -51,10 +51,10 @@ export function Contact() {
           className="text-center mb-12"
         >
           <h2 className="font-heading font-bold text-[#222222] text-3xl sm:text-4xl mb-4">
-            Let&apos;s Build Something
+            Ready To Get More Clients Online?
           </h2>
           <p className="text-[#7B7B7B] text-lg">
-            Have a project in mind? Let&apos;s talk.
+            Tell me about your business and I will get back to you within 24 hours. No commitment, just a conversation.
           </p>
         </motion.div>
 

@@ -6,25 +6,8 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Button } from "@/components/ui/button";
 
-const headline = "Hello, I'm Shayan Khan";
-const headlineChars = headline.split("");
-
-const container = {
-  hidden: { opacity: 0 },
-  visible: () => ({
-    opacity: 1,
-    transition: { staggerChildren: 0.03, delayChildren: 0.1 },
-  }),
-};
-
-const letter = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-};
+const headline = "Your Competitors Are Getting Leads Online. Are You?";
+const subtitle = "I build websites that make you look like the premium choice — and bring clients to you while you sleep.";
 
 export function Hero() {
   return (
@@ -53,41 +36,28 @@ export function Hero() {
       </div>
 
       <div className="max-w-[1280px] mx-auto px-6 relative z-10 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[#7B7B7B] text-sm font-medium mb-4"
+          className="font-heading font-bold text-[#222222] text-4xl sm:text-5xl md:text-6xl tracking-tight mb-6 max-w-5xl mx-auto leading-[1.1]"
         >
-          Dubai, UAE · Available for projects
-        </motion.p>
-
-        <motion.h1
-          className="font-heading font-bold text-[#222222] text-6xl md:text-8xl tracking-tight mb-6 max-w-5xl mx-auto leading-[1.05]"
-          variants={container}
-          initial="hidden"
-          animate="visible"
-        >
-          {headlineChars.map((char, i) => (
-            <motion.span key={i} variants={letter} className="inline-block">
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
+          {headline}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="text-[#7B7B7B] text-lg sm:text-xl max-w-2xl mx-auto mb-10"
         >
-          Web Developer building high-performance websites for UAE businesses
+          {subtitle}
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <Button
@@ -95,7 +65,7 @@ export function Hero() {
             size="lg"
             className="rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium px-8"
           >
-            <Link href="#portfolio">View My Work</Link>
+            <Link href="#portfolio">See My Work</Link>
           </Button>
           <Button
             asChild
@@ -103,14 +73,14 @@ export function Hero() {
             size="lg"
             className="rounded-full border-2 border-[#222222] text-[#222222] hover:bg-[#222222] hover:text-white font-medium px-8"
           >
-            <Link href="#contact">Book a Call</Link>
+            <Link href="#contact">Let's Talk</Link>
           </Button>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-wrap justify-center gap-12 sm:gap-16 text-[#222222]"
         >
           <Stat value={3} suffix="+ Projects Delivered" />

@@ -39,14 +39,10 @@ export function About() {
             className="space-y-6"
           >
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-[#222222]">
-              Building Digital Experiences That Work
+              I Build Websites That Work As Hard As You Do
             </h2>
             <p className="text-[#7B7B7B] text-base leading-relaxed">
-              I&apos;m Shayan Khan, a Dubai-based web developer specializing in
-              Next.js and React. I help UAE businesses stand out online with
-              fast, modern, SEO-optimized websites that convert. Using
-              cutting-edge tools and a focus on performance, I deliver
-              high-quality digital experiences that drive results.
+              Most websites look decent but do nothing. I build websites designed to make your business the obvious choice — fast, professional and built to bring you clients consistently. Based in Dubai, I work with brokers, agencies and businesses who are serious about their online presence.
             </p>
           </motion.div>
 
