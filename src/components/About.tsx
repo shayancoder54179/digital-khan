@@ -28,7 +28,7 @@ export function About() {
     <section
       id="about"
       ref={ref}
-      className="py-24 bg-[var(--dk-bg)]"
+      className="py-16 bg-[var(--dk-bg)]"
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">

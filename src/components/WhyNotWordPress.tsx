@@ -48,7 +48,7 @@ export function WhyNotWordPress() {
     <section
       id="why-not-wordpress"
       ref={ref}
-      className="py-24 bg-[var(--dk-bg)]"
+      className="py-16 bg-[var(--dk-bg)]"
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
