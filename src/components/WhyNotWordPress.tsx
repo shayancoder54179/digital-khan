@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -39,11 +39,20 @@ const comparisons = [
 
 export function WhyNotWordPress() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-    margin: "-80px",
-  });
+  const inView = useInView(ref, { once: false, amount: 0.05 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => { if (inView) setIsVisible(true); }, [inView]);
 
   return (
     <section
@@ -54,7 +63,7 @@ export function WhyNotWordPress() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
@@ -72,7 +81,7 @@ export function WhyNotWordPress() {
             <motion.div
               key={row.label}
               initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.05 }}
             >
               <Card className="rounded-xl border border-[#e5e5e5] bg-white overflow-hidden">
@@ -107,7 +116,7 @@ export function WhyNotWordPress() {
         {/* Desktop Table Layout - shown at 768px and above */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="hidden md:block overflow-hidden rounded-xl border border-[#e5e5e5]"
         >

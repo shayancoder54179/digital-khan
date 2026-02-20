@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -18,11 +18,20 @@ const stack = [
 
 export function About() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-    margin: "-80px",
-  });
+  const inView = useInView(ref, { once: false, amount: 0.05 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => { if (inView) setIsVisible(true); }, [inView]);
 
   return (
     <section
@@ -34,7 +43,7 @@ export function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
@@ -48,7 +57,7 @@ export function About() {
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <Card className="rounded-xl border-0 bg-[#222222] p-6 shadow-lg">

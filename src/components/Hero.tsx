@@ -92,11 +92,25 @@ export function Hero() {
 }
 
 function Stat({ value, suffix }: { value: number; suffix: string }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.05 });
   const [count, setCount] = useState(0);
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
+    const el = ref.current;
+    if (el) {
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setHasBeenVisible(true); },
+        { threshold: 0.05 }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+    }
+  }, []);
+  useEffect(() => { if (inView) setHasBeenVisible(true); }, [inView]);
+
+  useEffect(() => {
+    if (!hasBeenVisible) return;
     const duration = 1200;
     const steps = 30;
     const step = value / steps;
@@ -112,7 +126,7 @@ function Stat({ value, suffix }: { value: number; suffix: string }) {
       }
     }, interval);
     return () => clearInterval(timer);
-  }, [inView, value]);
+  }, [hasBeenVisible, value]);
 
   return (
     <div ref={ref} className="text-center">

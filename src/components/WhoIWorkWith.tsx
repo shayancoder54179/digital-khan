@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { User, Building2, Rocket } from "lucide-react";
@@ -25,11 +25,20 @@ const clients = [
 
 export function WhoIWorkWith() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-    margin: "-80px",
-  });
+  const inView = useInView(ref, { once: false, amount: 0.05 });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => { if (inView) setIsVisible(true); }, [inView]);
 
   return (
     <section
@@ -40,7 +49,7 @@ export function WhoIWorkWith() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
@@ -59,7 +68,7 @@ export function WhoIWorkWith() {
               <motion.div
                 key={client.title}
                 initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
               >
                 <Card className="rounded-xl bg-white border border-[#e5e5e5] h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300">

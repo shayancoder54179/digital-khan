@@ -39,17 +39,27 @@ const projects = [
 export function Portfolio() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, {
-    once: true,
-    amount: 0.05, // trigger when 5% visible (works on small mobile viewports)
-    margin: "-40px", // less aggressive than -80px so mobile still triggers
+    once: false,
+    amount: 0.05,
   });
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
 
-  // Fallback: if useInView never fires (e.g. mobile quirks), show cards after a short delay
+  // If section is already in view on page load, show immediately without waiting for scroll
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setHasBeenVisible(true);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     if (inView) setHasBeenVisible(true);
-    const fallback = setTimeout(() => setHasBeenVisible(true), 800);
-    return () => clearTimeout(fallback);
   }, [inView]);
 
   return (
