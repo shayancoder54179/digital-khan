@@ -3,9 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 
 const projects = [
   {
@@ -14,8 +13,8 @@ const projects = [
     description:
       "A luxury real estate broker website built to convert high-net-worth visitors into enquiries — premium design, fast loading and built to make any broker stand out in a crowded market.",
     link: "https://james-harrington-realestate.vercel.app",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
-    accent: "amber",
+    buttonText: "View Demo Site",
+    image: "james.png",
   },
   {
     name: "Bhadeya",
@@ -23,8 +22,8 @@ const projects = [
     description:
       "A UAE business that was getting zero leads from their old website. After the rebuild — leads coming in daily, better Google visibility and Google Ads performing stronger than ever.",
     link: "https://bhadeya.com",
-    tech: ["Next.js", "Tailwind", "shadcn/ui"],
-    accent: "blue",
+    buttonText: "View Live Site",
+    image: "bhadeya.png",
   },
   {
     name: "Exaim",
@@ -32,8 +31,8 @@ const projects = [
     description:
       "A B2B platform that needed to turn website visitors into demo bookings. Result — clients now reach out faster, understand the product better and the team can update the site in minutes instead of hours.",
     link: "https://exaim.ai",
-    tech: ["Next.js", "React", "TypeScript"],
-    accent: "purple",
+    buttonText: "View Live Site",
+    image: "exaim.png",
   },
 ];
 
@@ -73,63 +72,60 @@ export function Portfolio() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * i }}
+              className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-[8px]"
             >
-              <Link
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <Card
-                  className={`rounded-xl bg-[#222222] border-0 text-white overflow-hidden h-full group cursor-pointer transition-shadow duration-300 hover:shadow-xl hover:-translate-y-2 border-t-4 ${
-                    project.accent === "amber"
-                      ? "border-t-amber-500"
-                      : project.accent === "blue"
-                        ? "border-t-blue-500"
-                        : "border-t-purple-500"
-                  }`}
+              {/* TOP SECTION - Light gray background with image */}
+              <div className="bg-[#F5F5F5] p-4">
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative block w-full h-[200px] rounded-xl overflow-hidden cursor-pointer"
                 >
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          className={`rounded-full border-0 ${
-                            project.accent === "amber"
-                              ? "bg-amber-500/30 text-amber-100"
-                              : project.accent === "blue"
-                                ? "bg-blue-500/30 text-blue-100"
-                                : "bg-purple-500/30 text-purple-100"
-                          }`}
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <h3 className="font-heading font-bold text-xl mb-2 group-hover:text-white">
-                      {project.name}
-                    </h3>
-                    <p className="text-white/70 text-sm leading-relaxed mb-4 flex-1">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((t) => (
-                        <Badge
-                          key={t}
-                          variant="secondary"
-                          className="rounded-full bg-white/10 text-white border-0"
-                        >
-                          {t}
-                        </Badge>
-                      ))}
-                    </div>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-white">
-                      Visit site
-                      <ArrowUpRight className="w-4 h-4" />
-                    </span>
-                  </CardContent>
-                </Card>
-              </Link>
+                  <Image
+                    src={`/${project.image}`}
+                    alt={`${project.name} website screenshot`}
+                    fill
+                    className="object-cover object-top rounded-xl"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </Link>
+              </div>
+
+              {/* BOTTOM SECTION - Dark background with content */}
+              <div className="bg-[#1a1a1a] p-6">
+                {/* Tags row */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      className="rounded-full border-0 bg-white/10 text-white/70"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
+                {/* Project name */}
+                <h3 className="font-heading font-bold text-xl text-white mb-2">
+                  {project.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-400 text-sm mb-6">
+                  {project.description}
+                </p>
+
+                {/* Full width outlined button */}
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center py-3 px-6 rounded-full border-2 border-white text-white font-medium transition-all duration-300 hover:bg-white hover:text-[#1a1a1a]"
+                >
+                  {project.buttonText}
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
