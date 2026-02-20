@@ -34,6 +34,15 @@ const projects = [
     buttonText: "View Live Site",
     image: "exaim.png",
   },
+  {
+    name: "Al Hayl Medical Center",
+    tags: ["Healthcare", "Demo Project"],
+    description:
+      "A demo site for a real medical centre in Fujairah, UAE, with no online presence except their Google profile. Built to showcase services, doctors, booking flow and trust — ready to go live when they are.",
+    link: "https://al-hayl-medical-centre.vercel.app/",
+    buttonText: "View Demo Site",
+    image: "alhaylmedicalcenter.png",
+  },
 ];
 
 export function Portfolio() {
@@ -83,7 +92,7 @@ export function Portfolio() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <motion.div
               key={project.name}
@@ -105,7 +114,7 @@ export function Portfolio() {
                     alt={`${project.name} website screenshot`}
                     fill
                     className="object-contain rounded-xl"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </Link>
               </div>
