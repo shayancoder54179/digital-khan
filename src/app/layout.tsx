@@ -18,6 +18,17 @@ export const metadata: Metadata = {
   title: "Digital Khan | Web Developer Dubai",
   description:
     "Shayan Khan — Web Developer in Dubai building high-performance websites for UAE businesses using Next.js, React and Tailwind CSS",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
