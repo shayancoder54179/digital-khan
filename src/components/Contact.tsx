@@ -152,6 +152,15 @@ export function Contact() {
               I respond within 24 hours
             </p>
             <p className="text-[#7B7B7B] text-sm">
+              Or email us directly:{" "}
+              <a
+                href="mailto:shayan@digitalkhan.dev"
+                className="text-[#222222] font-medium underline underline-offset-2 hover:text-[#333333] transition-colors"
+              >
+                shayan@digitalkhan.dev
+              </a>
+            </p>
+            <p className="text-[#7B7B7B] text-sm">
               Based in Dubai, working with clients across UAE
             </p>
           </div>
