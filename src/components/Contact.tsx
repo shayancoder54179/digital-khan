@@ -33,12 +33,38 @@ export function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const nameTrim = name.trim() || "—";
     const emailTrim = email.trim() || "—";
     const messageTrim = message.trim() || "—";
+
+    setSubmitError(null);
+    setSending(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameTrim,
+          email: emailTrim,
+          message: messageTrim,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error ?? "Failed to send message");
+      }
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong");
+      setSending(false);
+      return;
+    }
+    setSending(false);
+
     const url = buildWhatsAppUrl(nameTrim, emailTrim, messageTrim);
     window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
@@ -123,6 +149,11 @@ export function Contact() {
                     className="w-full rounded-xl border border-[#e5e5e5] bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-[#7B7B7B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#222222] focus-visible:ring-offset-2"
                   />
                 </div>
+                {submitError && (
+                  <p className="text-sm text-red-600 font-medium">
+                    {submitError}
+                  </p>
+                )}
                 {submitted && (
                   <p className="text-sm text-green-600 font-medium">
                     Opened in WhatsApp — we&apos;ll be in touch!
@@ -130,9 +161,10 @@ export function Contact() {
                 )}
                 <Button
                   type="submit"
-                  className="w-full rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium"
+                  disabled={sending}
+                  className="w-full rounded-full bg-[#222222] hover:bg-[#333333] text-white font-medium disabled:opacity-70"
                 >
-                  Send message
+                  {sending ? "Sending…" : "Send message"}
                 </Button>
               </form>
             </CardContent>
